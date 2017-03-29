@@ -1,0 +1,14 @@
+- Create branches to point function of website
+=> It's look like:
+    admin/student/addNewStudent
+    admin/studnet/editStudent
+    admin/student/deleteStudent
+    ....
+    ....
+
+=> Architecture Wordpress:
+    - post
+    - page
+    - 404
+    => We create every folder contain every type.
+

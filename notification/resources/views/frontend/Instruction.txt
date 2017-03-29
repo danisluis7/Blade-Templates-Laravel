@@ -1,0 +1,76 @@
+ABOUT ADMIN WEBSITE
+ ONE Create a folder: admin => www.domain.com/admin
+ => admin.txt
+
+ TWO Create a templates
+ => We have tree:
+
+ templates/admin
+    templates/admin/cheditor
+    templates/admin/css
+    templates/admin/images
+    templates/admin/inc
+        templates/admin/inc/header.blade.php
+        templates/admin/inc/footer.blade.php
+        templates/admin/inc/sidebar.blade.php
+
+    templates/admin/js
+
+ templates/public
+    templates/admin/css
+    templates/admin/images
+    templates/admin/inc
+        templates/admin/inc/header.blade.php
+        templates/admin/inc/footer.blade.php
+        templates/admin/inc/sidebar.blade.php
+
+ THREE Create a template common, include header, footer and customize
+
+    STEP 1: Copy index.html => index.blade.php, like welcome.blade.php
+            Copy css,js,image put public
+    +> Customize
+        Simple:
+            => {{URL::asset('js/jquery.validate.js')}}
+            => {{URL::asset('css/style.css')}}
+        Advance:
+            => {{URL::asset('resources/assets/js/jquery.validate.js')}}
+            => {{URL::asset('resources/assets/js/jquery.validate.js')}}
+
+    STEP 2: Create Route and Controller to call index.blade.php
+        Preference: https://github.com/vuongluisvippro/VinaEnter-Project-AboutMe/tree/master/src/controller
+        => Servlet like Controller
+
+    STEP 3:
+        Cut LayoutWebsite into more part of website
+        @yield('title') => Customize title for each page.
+        @yield('content') => Customize content for each page
+
+        @include('templates.header');
+        @include('templates.footer');
+
+    STEP 4:
+        Create a templates to contain header.php, footer.php and sidebar.php
+        - You move index.blade.php[full html] into templates
+        - Customize ControllerAdminIndex:
+        class ControllerAdminIndex extends Controller
+        {
+            public function index(){
+                return view('templates.index');
+            }
+        }
+
+        - Change index.blade.php into master.blade.php
+        class ControllerAdminIndex extends Controller
+        {
+            public function index(){
+                return view('templates.master');
+            }
+        }
+
+        - Specify content that your remove and custom in child layout.
+
+
+
+
+
+
